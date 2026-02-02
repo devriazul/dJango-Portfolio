@@ -1,0 +1,43 @@
+# Core
+Django>=4.2
+gunicorn>=21.0
+whitenoise>=6.6
+
+# Database
+psycopg2-binary>=2.9
+
+# Environment & Config
+python-decouple>=3.8
+dj-database-url>=2.1
+
+# Static Files & Media
+django-storages>=1.14
+Pillow>=10.1
+
+# Admin Enhancements
+django-jazzmin>=2.6
+django-import-export>=3.3
+
+# Security
+django-cors-headers>=4.3
+
+# Development
+django-debug-toolbar>=4.2
+django-extensions>=3.2
+
+# Blog
+markdown2>=2.4
+django-markdownify>=0.9
+
+# API (Optional)
+djangorestframework>=3.14
+
+# SEO
+django-meta>=2.4
+
+# Email
+django-anymail>=10.2
+
+# Forms
+django-crispy-forms>=2.1
+crispy-tailwind>=0.5

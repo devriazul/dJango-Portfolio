@@ -1,0 +1,64 @@
+<nav x-data="{ open: false }" class="fixed top-0 left-0 right-0 bg-white shadow-md z-40">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <!-- Logo -->
+            <div class="flex-shrink-0">
+                <a href="{% url 'core:home' %}" class="flex items-center space-x-2">
+                    {% if site_settings.avatar %}
+                    <img src="{{ site_settings.avatar.url }}" alt="{{ site_settings.site_title }}" class="h-8 w-8 rounded-full object-cover">
+                    {% else %}
+                    <div class="h-8 w-8 bg-primary-600 rounded-full flex items-center justify-center">
+                        <span class="text-white font-bold text-sm">RI</span>
+                    </div>
+                    {% endif %}
+                    <span class="text-xl font-bold text-gray-900">{{ site_settings.site_title|default:'Riazul Islam' }}</span>
+                </a>
+            </div>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-8">
+                    <a href="{% url 'core:home' %}" class="text-gray-900 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Home</a>
+                    <a href="{% url 'core:about' %}" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">About</a>
+                    <a href="{% url 'portfolio:project_list' %}" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Projects</a>
+                    <a href="{% url 'skills:skill_list' %}" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Skills</a>
+                    <a href="{% url 'experience:experience_timeline' %}" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Experience</a>
+                    <a href="{% url 'blog:post_list' %}" class="text-gray-600 hover:text-primary-600 px-3 py-2 text-sm font-medium transition-colors">Blog</a>
+                    <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white hover:bg-primary-700 px-4 py-2 rounded-md text-sm font-medium transition-colors">Contact</a>
+                </div>
+            </div>
+            
+            <!-- Mobile menu button -->
+            <div class="md:hidden">
+                <button @click="open = !open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-primary-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                    <span class="sr-only">Open main menu</span>
+                    <svg x-show="!open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg x-show="open" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div x-show="open" x-transition:enter="transition ease-out duration-100" 
+         x-transition:enter-start="transform opacity-0 scale-95"
+         x-transition:enter-end="transform opacity-100 scale-100"
+         x-transition:leave="transition ease-in duration-75"
+         x-transition:leave-start="transform opacity-100 scale-100"
+         x-transition:leave-end="transform opacity-0 scale-95"
+         class="md:hidden" style="display: none;">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-white border-t border-gray-200">
+            <a href="{% url 'core:home' %}" class="text-gray-900 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="{% url 'core:about' %}" class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">About</a>
+            <a href="{% url 'portfolio:project_list' %}" class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+            <a href="{% url 'skills:skill_list' %}" class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+            <a href="{% url 'experience:experience_timeline' %}" class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Experience</a>
+            <a href="{% url 'blog:post_list' %}" class="text-gray-600 hover:text-primary-600 block px-3 py-2 rounded-md text-base font-medium">Blog</a>
+            <a href="{% url 'core:contact' %}" class="bg-primary-600 text-white hover:bg-primary-700 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+        </div>
+    </div>
+</nav>
